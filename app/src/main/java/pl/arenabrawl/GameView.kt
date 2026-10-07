@@ -73,7 +73,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             val c: Canvas? = try { holder.lockCanvas() } catch (e: Exception) { null }
             if (c != null) {
                 try {
-                    synchronized(lock) { draw(c) }
+                    synchronized(lock) { drawGame(c) }
                 } finally {
                     holder.unlockCanvasAndPost(c)
                 }
@@ -170,7 +170,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         return if (hi < lo) (WORLD - view) / 2f else (v - view / 2f).coerceIn(lo, hi)
     }
 
-    private fun draw(c: Canvas) {
+    private fun drawGame(c: Canvas) {
         val w = width.toFloat()
         val h = height.toFloat()
         val g = game
